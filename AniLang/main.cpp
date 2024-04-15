@@ -1,5 +1,5 @@
 #include <QCoreApplication>
-#include "token.h"
+#include "lexer.h"
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -11,5 +11,16 @@ int main(int argc, char *argv[])
     // qDebug() << text2;
     // QString text = "FANTASIO";
     // qDebug() << text[3];
+    // QString dad = "+-/*";
+    // qDebug() << dad.contains("]");
+    // QString inf = "2 + 9";
+    // Lexer *test = new Lexer(inf);
+    // QVector<Token> tokens = test->processed();
+    // for (Token  token : tokens) {
+    //     qDebug() << token.getType();
+    // }
     return a.exec();
 }
+
+
+// TRASH FILE :D

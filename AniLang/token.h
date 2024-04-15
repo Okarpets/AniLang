@@ -8,12 +8,14 @@ class Token
 {
 public:
     Token();
-    Token(TypeOfToken type, QString text);
-    void setTokenText(QString text);
+    Token(TypeOfToken type, QString text); // construct :3
+
+    void setTokenText(QString text); // Classic getter-setter system
     QString getTokenText();
     void setType(TypeOfToken type);
     TypeOfToken getType();
-private:
+
+private: // Token atributes
     QString text;
     TypeOfToken type;
 };

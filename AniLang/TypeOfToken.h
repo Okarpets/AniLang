@@ -1,7 +1,7 @@
 #ifndef TYPEOFTOKEN_H
 #define TYPEOFTOKEN_H
 
-enum TypeOfToken {
+enum TypeOfToken { // This enumeration stores all types of tokens that will be transferred for processing
     NUMBER, // 0
     SUM, // 1
     MINUS, // 2
