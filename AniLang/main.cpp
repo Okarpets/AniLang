@@ -13,12 +13,13 @@ int main(int argc, char *argv[])
     // qDebug() << text[3];
     // QString dad = "+-/*";
     // qDebug() << dad.contains("]");
-    // QString inf = "2 + 9";
-    // Lexer *test = new Lexer(inf);
-    // QVector<Token> tokens = test->processed();
-    // for (Token  token : tokens) {
-    //     qDebug() << token.getType();
-    // }
+     QString inf = "26 + 93";
+     Lexer *test = new Lexer(inf);
+     QVector<Token> tokens = test->processed();
+     for (Token  token : tokens) {
+        qDebug() << token.getType();
+        qDebug() << token.getTokenText();
+     }
     return a.exec();
 }
 
