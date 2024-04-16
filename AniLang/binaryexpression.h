@@ -5,11 +5,13 @@
 
 #include "expression.h"
 
-class BinaryExpression
+class BinaryExpression : public Expression
 {
 public:
     BinaryExpression(QChar operation, Expression expression1, Expression expression2);
     double eval();
+    QString toString();
+
 private:
     Expression expression1;
     Expression expression2;

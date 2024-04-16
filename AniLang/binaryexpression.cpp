@@ -17,5 +17,11 @@ double BinaryExpression::eval()
         case '+':
             return expression1.eval() + expression2.eval();
 
-    }
+        }
+}
+
+QString BinaryExpression::toString()
+{
+   // QString result = QString("%1 %2 %3").arg(expression1).arg(operation).arg(expression2);
+    return "expression1operationexpression2";
 }
