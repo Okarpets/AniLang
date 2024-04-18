@@ -1,36 +1,34 @@
 #include <QCoreApplication>
-#include "lexer.h"
-#include "expression.h"
-#include "parser.h"
-#include <qdebug.h>
+#include <QString>
 
-int main(int argc, char *argv[])
+#include <QJsonDocument>
+#include <QFile>
+#include <QJsonObject>
+
+QString readJsonFile();
+QString valueFromJson(QString);
+
+
+int main()
 {
-    QCoreApplication a(argc, argv);
-    // Token *num = new Token(FILEEND, "dad");
-    // TypeOfToken text = num->getType();
-    // qDebug() << text;
-    // num->setType(MULTIPLY);
-    // TypeOfToken text2 = num->getType();
-    // qDebug() << text2;
-    // QString dad = "+-/*";
-    // qDebug() << dad.contains("]");
-    QString inf = "-8";
-    Lexer *test = new Lexer(inf);
-    QVector<Token> tokens = test->processed();
-    for (Token  token : tokens) {
-        qDebug() << token.getType();
-        qDebug() << token.getTokenText();
-    }
+    QString testResult = valueFromJson("дробное");
+    qDebug() << testResult;
 
-    Parser *primaryTest = new Parser(tokens);
-    QVector<Expression> expressions = primaryTest->parse();
-    for (Expression expression : expressions) {
-        qDebug() << expression.toString();
-    }
-
-    return a.exec();
+    return 0;
 }
 
+QString readJsonFile()
+{
+    QFile file(":/Resources/lexer.json");
+    file.open(QIODevice::ReadOnly);
+    QString fileData = file.readAll();
+    return fileData;
+}
 
-// TRASH FILE :D
+QString valueFromJson(QString orderValue)
+{
+    QJsonDocument bufferDocument = QJsonDocument::fromJson(readJsonFile().toUtf8());
+    QJsonObject bufferObject = bufferDocument.object();
+    QJsonValue value = bufferObject.value(QString("%1").arg(orderValue));
+    return value.toString();
+}

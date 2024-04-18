@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/lexer.json</file>
+    </qresource>
+</RCC>
