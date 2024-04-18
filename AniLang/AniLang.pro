@@ -10,7 +10,8 @@ CONFIG += c++17 cmdline
 SOURCES += \
         jsonparser.cpp \
         main.cpp \
-        replacer.cpp
+        replacer.cpp \
+        threadobject.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -20,7 +21,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     LexerExpression.h \
     jsonparser.h \
-    replacer.h
+    replacer.h \
+    threadobject.h
 
 DISTFILES += \
     JSON.txt \

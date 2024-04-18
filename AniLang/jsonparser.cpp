@@ -2,24 +2,27 @@
 
 JsonParser::JsonParser() {}
 
-bool JsonParser::keywordIn(QString orderValue)
+QVector<QString> JsonParser::getAllKeys()
 {
-    QString bufferObject = readJsonFile();
-    return bufferObject.contains(orderValue);
+    QVector<QString> keys = readJsonFile().keys();
+    return keys;
 }
 
-QString JsonParser::readJsonFile()
+QJsonObject JsonParser::readJsonFile()
 {
     QFile file(":/Resources/lexer.json");
     file.open(QIODevice::ReadOnly);
     QString fileData = file.readAll();
-    return fileData;
+    file.close();
+    QJsonDocument bufferDocument = QJsonDocument::fromJson(fileData.toUtf8());
+    QJsonObject bufferJsonObject = bufferDocument.object();
+    return bufferJsonObject;
 }
 
 QString JsonParser::valueFromJson(QString orderValue)
 {
-    QJsonDocument bufferDocument = QJsonDocument::fromJson(readJsonFile().toUtf8());
-    QJsonObject bufferObject = bufferDocument.object();
-    QJsonValue value = bufferObject.value(QString("%1").arg(orderValue));
+    QJsonValue value = readJsonFile().value(orderValue);
     return value.toString();
 }
+
+

@@ -10,11 +10,12 @@ class JsonParser
 {
 public:
     JsonParser();
-    bool keywordIn(QString);
-    QString valueFromJson(QString orderValue);
+    QVector<QString> getAllKeys();
+    QString valueFromJson(QString);
 
 private:
-    QString readJsonFile();
+    QJsonObject readJsonFile();
+
 };
 
 #endif // JSONPARSER_H
