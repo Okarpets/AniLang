@@ -1,34 +1,18 @@
 #include <QCoreApplication>
-#include <QString>
 
-#include <QJsonDocument>
-#include <QFile>
-#include <QJsonObject>
-
-QString readJsonFile();
-QString valueFromJson(QString);
-
+#include "jsonparser.h"
+#include "replacer.h"
 
 int main()
 {
-    QString testResult = valueFromJson("дробное");
-    qDebug() << testResult;
+    //JsonParser *parser = new JsonParser();
+    //QString value = parser->valueFromJson("дробное");
+
+    //Replacer *repl = new Replacer();
+    //QString value = repl->readLangFile();
+
+    //bool value = parser->keywordIn();
+    //qDebug() << value;
 
     return 0;
-}
-
-QString readJsonFile()
-{
-    QFile file(":/Resources/lexer.json");
-    file.open(QIODevice::ReadOnly);
-    QString fileData = file.readAll();
-    return fileData;
-}
-
-QString valueFromJson(QString orderValue)
-{
-    QJsonDocument bufferDocument = QJsonDocument::fromJson(readJsonFile().toUtf8());
-    QJsonObject bufferObject = bufferDocument.object();
-    QJsonValue value = bufferObject.value(QString("%1").arg(orderValue));
-    return value.toString();
 }
