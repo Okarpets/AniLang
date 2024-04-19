@@ -15,4 +15,10 @@ void ThreadObject::run()
     for (QString key : allKeys) {
     newText = newText.replace(key, parser->valueFromJson(key));
     }
+    QFile file(QString("./BufferFile%1.txt").arg(integer));
+    file.open(QIODevice::WriteOnly);
+    QTextStream out(&file);
+    out << newText;
+    file.close();
+    delete parser;
 }

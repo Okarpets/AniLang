@@ -6,6 +6,8 @@
 #include <QString>
 #include <QObject>
 
+#include <QProcess>
+
 #include "jsonparser.h"
 #include "threadobject.h"
 
@@ -17,11 +19,11 @@ public:
     void threadReplace();
     void toCpp();
     void cppCompile();
+    void deleteAllBufferFile();
     QVector<QString> fileData;
     QVector<QString> newDataInit;
 
 private:
-    bool checkKey(QString, int);
     void newData();
 
     QString filePath = "C:/Users/User/AniLang/AniLang/lang.lpp";
