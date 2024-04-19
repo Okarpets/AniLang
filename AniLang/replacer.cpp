@@ -71,12 +71,10 @@ void Replacer::toCpp()
 
 void Replacer::cppCompile()
 {
-    QProcess process;
-    QString command = "";
-    process.start("cmd");
-    process.write(command.toUtf8());
-    process.write("exit\n");
-    process.waitForFinished(-1);
+    system("g++ C:\\Users\\User\\AniLang\\build-AniLang-Desktop_Qt_6_6_2_MinGW_64_bit-Debug\\lang.cpp -o lang.o");
+    system("g++ C:\\Users\\User\\AniLang\\build-AniLang-Desktop_Qt_6_6_2_MinGW_64_bit-Debug\\lang.cpp -o lang.exe");
+    system("cls");
+
 }
 
 void Replacer::newData()

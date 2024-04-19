@@ -9,7 +9,7 @@ int main()
     //QString value = parser->valueFromJson("дробное");
 
     Replacer *repl = new Replacer();
-    repl->threadReplace();
+    repl->cppCompile();
 
 
     //bool value = parser->keywordIn();
