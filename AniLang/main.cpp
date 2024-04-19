@@ -8,8 +8,8 @@ int main()
     //JsonParser *parser = new JsonParser();
     //QString value = parser->valueFromJson("дробное");
 
-    Replacer *repl = new Replacer();
-    repl->threadReplace();
+    //Replacer *repl = new Replacer();
+    //repl->threadReplace();
 
 
     //bool value = parser->keywordIn();

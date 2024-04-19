@@ -4,6 +4,7 @@
 #include <QFile>
 
 #include <QString>
+#include <QObject>
 
 #include "jsonparser.h"
 #include "threadobject.h"
@@ -12,18 +13,21 @@ class Replacer
 {
 public:
     Replacer();
-    QString readLangFile();
+    QVector<QString> readLangFile();
     void threadReplace();
     void toCpp();
     void cppCompile();
+    QVector<QString> fileData;
+    QVector<QString> newDataInit;
 
 private:
-    bool keywordIn(QString);
-    void replaceInFile(QString);
+    bool checkKey(QString, int);
+    void newData();
 
-    QString filePath = ":/Resources/lang.lpp";
+    QString filePath = "C:/Users/User/AniLang/AniLang/lang.lpp";
     JsonParser *jsonManager;
     QVector<QString> allJsonKeys;
+
 };
 
 #endif // REPLACER_H

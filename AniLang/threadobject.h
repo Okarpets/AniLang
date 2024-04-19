@@ -5,19 +5,19 @@
 #include <QFile>
 #include <QTextStream>
 
+#include "replacer.h"
+
 class ThreadObject : public QThread
 {
 public:
-    ThreadObject(QString filePath, QString oldValue, QString newValue, QString fileText);
+    ThreadObject(QVector<QString> fileData, int integer);
 
 protected:
     void run() override;
 
 private:
-    QString filePath;
-    QString oldValue;
-    QString newValue;
-    QString fileText;
+    QVector<QString> fileData;
+    int integer;
 
 };
 
