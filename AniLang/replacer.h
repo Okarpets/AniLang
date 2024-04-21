@@ -14,7 +14,7 @@
 class Replacer
 {
 public:
-    Replacer();
+    Replacer(QString pathOfLppFile);
     QVector<QString> readLangFile();
     void threadReplace();
     void toCpp();
@@ -26,7 +26,9 @@ public:
 private:
     void newData();
 
-    QString filePath = "C:/Users/User/AniLang/AniLang/lang.lpp";
+    QString pathWithoutFile;
+    QString filePath;
+    QString fileName;
     JsonParser *jsonManager;
     QVector<QString> allJsonKeys;
 

@@ -1,8 +1,16 @@
 #include "replacer.h"
 
-Replacer::Replacer() {
+Replacer::Replacer(QString pathOfFile) {
     this->allJsonKeys = jsonManager->getAllKeys();
     this->fileData = readLangFile();
+    this->filePath = pathOfFile;
+    QString pathWithoutFile = pathOfFile.left(pathOfFile.lastIndexOf('\\') + 1);
+    this->pathWithoutFile = pathWithoutFile;
+    qDebug() << pathOfFile;
+    qDebug() << pathWithoutFile;
+    QString fileName = pathOfFile.remove(pathWithoutFile).remove(".lpp");
+    this->fileName = fileName;
+    qDebug() << fileName;
     newData();
 }
 
@@ -71,9 +79,10 @@ void Replacer::toCpp()
 
 void Replacer::cppCompile()
 {
-    system("g++ C:\\Users\\User\\AniLang\\build-AniLang-Desktop_Qt_6_6_2_MinGW_64_bit-Debug\\lang.cpp -o lang.o");
-    system("g++ C:\\Users\\User\\AniLang\\build-AniLang-Desktop_Qt_6_6_2_MinGW_64_bit-Debug\\lang.cpp -o lang.exe");
-    system("cls");
+    QString objectFile = QString("%1%2.cpp -o %3%4.o").arg(pathWithoutFile).arg(fileName).arg(pathWithoutFile).arg(fileName);
+    QString executFile = QString("%1%2.cpp -o %3%4.exe").arg(pathWithoutFile).arg(fileName).arg(pathWithoutFile).arg(fileName);
+    system(objectFile.toLatin1());
+    system(objectFile.toLatin1());
 
 }
 
