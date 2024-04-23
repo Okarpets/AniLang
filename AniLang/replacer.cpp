@@ -67,20 +67,26 @@ void Replacer::toCpp()
         buffer = buffer + file.readAll();
         file.close();
     }
-    QFile file("./lang.cpp");
+    QFile file(QString("%1lang.cpp").arg(pathWithoutFile));
     file.open(QIODevice::WriteOnly);
     QTextStream out(&file);
     out << buffer;
     file.close();
 }
 
+void Replacer::deleteCpp()
+{
+    QFile file(QString("%1lang.cpp").arg(pathWithoutFile));
+    file.remove();
+}
+
 void Replacer::cppCompile()
 {
-    QString objectFile = QString("g++ %1 -o %2%3.o").arg(filePath).arg(pathWithoutFile).arg(fileName);
-    QString executFile = QString("g++ %1 -o %2%3.exe").arg(filePath).arg(pathWithoutFile).arg(fileName);
+    QString objectFile = QString("g++ %1lang.cpp -o %2%3.o").arg(pathWithoutFile).arg(pathWithoutFile).arg(fileName);
+    QString executFile = QString("g++ %1lang.cpp -o %2%3.exe").arg(pathWithoutFile).arg(pathWithoutFile).arg(fileName);
     system(objectFile.toLatin1());
     system(executFile.toLatin1());
-
+    deleteCpp();
 }
 
 void Replacer::newData()

@@ -18,6 +18,7 @@ public:
     QVector<QString> readLangFile();
     void threadReplace();
     void toCpp();
+    void deleteCpp();
     void cppCompile();
     void deleteAllBufferFile();
     QVector<QString> fileData;
