@@ -1,16 +1,13 @@
 #include "replacer.h"
 
-Replacer::Replacer(QString pathOfFile) {
+Replacer::Replacer(QString pathOfLppFile) {
     this->allJsonKeys = jsonManager->getAllKeys();
     this->fileData = readLangFile();
-    this->filePath = pathOfFile;
-    QString pathWithoutFile = pathOfFile.left(pathOfFile.lastIndexOf('\\') + 1);
+    this->filePath = pathOfLppFile;
+    QString pathWithoutFile = pathOfLppFile.left(pathOfLppFile.lastIndexOf('\\') + 1);
     this->pathWithoutFile = pathWithoutFile;
-    qDebug() << pathOfFile;
-    qDebug() << pathWithoutFile;
-    QString fileName = pathOfFile.remove(pathWithoutFile).remove(".lpp");
+    QString fileName = pathOfLppFile.remove(pathWithoutFile).remove(".lpp").remove(".cpp");
     this->fileName = fileName;
-    qDebug() << fileName;
     newData();
 }
 
@@ -79,10 +76,10 @@ void Replacer::toCpp()
 
 void Replacer::cppCompile()
 {
-    QString objectFile = QString("%1%2.cpp -o %3%4.o").arg(pathWithoutFile).arg(fileName).arg(pathWithoutFile).arg(fileName);
-    QString executFile = QString("%1%2.cpp -o %3%4.exe").arg(pathWithoutFile).arg(fileName).arg(pathWithoutFile).arg(fileName);
+    QString objectFile = QString("g++ %1 -o %2%3.o").arg(filePath).arg(pathWithoutFile).arg(fileName);
+    QString executFile = QString("g++ %1 -o %2%3.exe").arg(filePath).arg(pathWithoutFile).arg(fileName);
     system(objectFile.toLatin1());
-    system(objectFile.toLatin1());
+    system(executFile.toLatin1());
 
 }
 
