@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     if(parser.isSet(filePath)) {
         QString pathOfFile = parser.value(filePath);
         Replacer *repl = new Replacer(pathOfFile);
-        repl->cppCompile();
+        repl->threadReplace();
     };
 
     //JsonParser *parser = new JsonParser();
