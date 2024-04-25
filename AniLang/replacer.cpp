@@ -47,21 +47,18 @@ void Replacer::threadReplace()
             }
         }
     QFile file(QString("%1lang.cpp").arg(pathWithoutFile));
-    qDebug() << "TESTTTT";
     file.open(QIODevice::WriteOnly);
     QTextStream out(&file);
     QString bufferss;
     for (int index = 0; index < fileData.size(); index++) {
         bufferss += fileData[index];
     }
-    qDebug() << "DATTTATAAAAA:    ";
-    qDebug() << bufferss;
     out << bufferss;
     file.close();
 
-    //toCpp();
+    //cppManager->toCpp(fileData, pathWithoutFile);
     //deleteAllBufferFile();
-    cppCompile();
+    cppManager->cppCompile(pathWithoutFile, fileName);
 }
 
 void Replacer::deleteAllBufferFile()
@@ -70,46 +67,6 @@ void Replacer::deleteAllBufferFile()
         QFile file(QString("./BufferFile%1.txt").arg(index));
         file.remove();
     }
-}
-
-void Replacer::toCpp()
-{
-    QString buffer;
-    for (int index = 0; index < fileData.size(); index++) {
-        QFile file(QString("./BufferFile%1.txt").arg(index));
-        file.open(QIODevice::ReadOnly);
-        while (true) {
-            if (file.isOpen() == false)
-            {
-                file.open(QIODevice::ReadOnly);
-            }
-            else break;
-        }
-        buffer = buffer + file.readAll();
-        file.close();
-    }
-    QFile file(QString("%1lang.cpp").arg(pathWithoutFile));
-    file.open(QIODevice::WriteOnly);
-    QTextStream out(&file);
-    out << buffer;
-    file.close();
-}
-
-void Replacer::deleteCpp()
-{
-    QFile file(QString("%1lang.cpp").arg(pathWithoutFile));
-    file.remove();
-}
-
-void Replacer::cppCompile()
-{
-    QString objectFile = QString("g++ %1lang.cpp -o %2%3.o").arg(pathWithoutFile).arg(pathWithoutFile).arg(fileName);
-    QString executFile = QString("g++ %1lang.cpp -o %2%3.exe").arg(pathWithoutFile).arg(pathWithoutFile).arg(fileName);
-    QString openExe = QString("%1%2.exe").arg(pathWithoutFile).arg(fileName);
-    system(objectFile.toLatin1());
-    system(executFile.toLatin1());
-    system(openExe.toLatin1());
-    deleteCpp();
 }
 
 void Replacer::newData()

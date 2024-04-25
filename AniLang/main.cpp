@@ -17,15 +17,5 @@ int main(int argc, char *argv[])
         repl->threadReplace();
     };
 
-    //JsonParser *parser = new JsonParser();
-    //QString value = parser->valueFromJson("дробное");
-
-
-
-
-    //bool value = parser->keywordIn();
-    //qDebug() << value;
-
-    qDebug() << "END OF PROGRAM";
     return a.exec();
 }

@@ -9,6 +9,7 @@
 #include <QProcess>
 
 #include "jsonparser.h"
+#include "cppmanager.h"
 #include "threadobject.h"
 
 class Replacer
@@ -17,9 +18,6 @@ public:
     Replacer(QString pathOfLppFile);
     QVector<QString> readLangFile();
     void threadReplace();
-    void toCpp();
-    void deleteCpp();
-    void cppCompile();
     void deleteAllBufferFile();
     QVector<QString> fileData;
     QVector<QString> newDataInit;
@@ -30,8 +28,11 @@ private:
     QString pathWithoutFile;
     QString filePath;
     QString fileName;
-    JsonParser *jsonManager;
     QVector<QString> allJsonKeys;
+
+    JsonParser *jsonManager;
+    CppManager *cppManager;
+
 
 };
 
