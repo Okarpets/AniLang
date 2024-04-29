@@ -39,13 +39,13 @@ void Replacer::threadReplace()
 
 
             // Timely code:
-            for (QString data : fileData) {
+            QString bufferData = fileData[index];
                 for (QString value : allJsonKeys) {
-                    data.replace(value, jsonManager->valueFromJson(value));
+                    bufferData = bufferData.replace(value, jsonManager->valueFromJson(value));
                 }
-                fileData[index] = data;
-            }
-        }
+            fileData[index] = bufferData;
+                bufferData.clear();
+    }
     QFile file(QString("%1lang.cpp").arg(pathWithoutFile));
     file.open(QIODevice::WriteOnly);
     QTextStream out(&file);
