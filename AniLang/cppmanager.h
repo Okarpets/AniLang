@@ -10,9 +10,9 @@ class CppManager
 {
 public:
     CppManager();
-    void deleteCpp(QString pathWithoutFile);
     void cppCompile(QString pathWithoutFile, QString fileName);
-    void toCpp(QVector<QString> fileData, QString pathWithoutFile);
+    void toCpp(QString fileData, QString pathWithoutFile, QString fileName);
+    void deleteCpp(QString pathWithoutFile, QString fileName);
 };
 
 #endif // CPPMANAGER_H

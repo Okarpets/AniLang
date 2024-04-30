@@ -10,21 +10,16 @@
 
 #include "jsonparser.h"
 #include "cppmanager.h"
-#include "threadobject.h"
 
 class Replacer
 {
 public:
     Replacer(QString pathOfLppFile);
-    QVector<QString> readLangFile();
-    void threadReplace();
-    void deleteAllBufferFile();
-    QVector<QString> fileData;
-    QVector<QString> newDataInit;
+    QString readLangFile();
+    void replace();
+    QString fileData;
 
 private:
-    void newData();
-
     QString pathWithoutFile;
     QString filePath;
     QString fileName;

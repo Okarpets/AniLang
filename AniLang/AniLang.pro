@@ -11,8 +11,7 @@ SOURCES += \
         cppmanager.cpp \
         jsonparser.cpp \
         main.cpp \
-        replacer.cpp \
-        threadobject.cpp
+        replacer.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -23,8 +22,7 @@ HEADERS += \
     LexerExpression.h \
     cppmanager.h \
     jsonparser.h \
-    replacer.h \
-    threadobject.h
+    replacer.h
 
 DISTFILES += \
     JSON.txt \
