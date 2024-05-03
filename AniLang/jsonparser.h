@@ -12,7 +12,6 @@ public:
     JsonParser();
     QVector<QString> getAllKeys();
     QString valueFromJson(QString);
-
 private:
     QJsonObject readJsonFile();
 

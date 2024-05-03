@@ -25,6 +25,6 @@ void CppManager::cppCompile(QString pathWithoutFile, QString fileName)
     QString openExe = QString("%1%2.exe").arg(pathWithoutFile).arg(fileName);
     system(objectFile.toLatin1());
     system(executFile.toLatin1());
-    deleteCpp(pathWithoutFile, fileName);
+    //deleteCpp(pathWithoutFile, fileName);
     system(openExe.toLatin1());
 }

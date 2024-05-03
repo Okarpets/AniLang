@@ -29,6 +29,11 @@ void Replacer::replace()
                 fileData = fileData.replace(value, jsonManager->valueFromJson(value));
     }
 
+    for (QString value : allJsonKeys) {
+        QString undo = QString("/%1").arg(jsonManager->valueFromJson(value));
+        fileData = fileData.replace(undo, value);
+    }
+
     cppManager->toCpp(fileData, pathWithoutFile, fileName);
     cppManager->cppCompile(pathWithoutFile, fileName);
 }
